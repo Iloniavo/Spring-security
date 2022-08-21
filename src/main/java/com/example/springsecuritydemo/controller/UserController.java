@@ -3,6 +3,7 @@ package com.example.springsecuritydemo.controller;
 import com.example.springsecuritydemo.model.Roles;
 import com.example.springsecuritydemo.model.Users;
 import com.example.springsecuritydemo.repository.RoleRepository;
+import com.example.springsecuritydemo.service.OtherUserService;
 import com.example.springsecuritydemo.service.PostService;
 import com.example.springsecuritydemo.service.UserService;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @CrossOrigin
 public class UserController {
     private UserService userService;
-
+    private OtherUserService otherUserService;
     @Autowired
     RoleRepository roleRepository;
 
@@ -44,7 +45,7 @@ public class UserController {
 
     @PostMapping("/adduser")
     public Users addRole(@RequestBody Users user){
-        return userService.addUser(user);
+        return otherUserService.addUser(user);
     }
 
     @PostMapping("/addrole")
